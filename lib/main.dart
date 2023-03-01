@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'aluno.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,10 +13,10 @@ class MyApp extends StatelessWidget {
       // Application theme data, you can set the colors for the application as
       // you want
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'FINALISTA ADS 2023.1'),
     );
   }
 }
@@ -23,6 +24,17 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   final String title;
   const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  Widget buildAlunoCard(Aluno aluno) {
+    return Card(
+      child: Column(
+        children: <Widget>[
+          Image.network(aluno.urlImage),
+          Text(aluno.nome),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +44,12 @@ class MyHomePage extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Text(
-          'Hello, World!',
+        child: ListView.builder(
+          itemCount: Aluno.exemplos.length,
+          itemBuilder: (BuildContext context, int index) {
+            return buildAlunoCard(Aluno.exemplos[index]);
+            //return Text(Aluno.exemplos[index].nome);
+          },
         ),
       ),
     );
