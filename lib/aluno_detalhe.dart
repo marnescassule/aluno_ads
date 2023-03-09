@@ -24,7 +24,23 @@ class _AlunoDetalheState extends State<AlunoDetalhe> {
       ),
       body: SafeArea(
         child: Column(
-          children: <Widget>[Text(widget.aluno.descricao)],
+          children: <Widget>[
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(widget.aluno.urlImage),
+            ),
+            Text(widget.aluno.descricao),
+            Expanded(
+                child: ListView.builder(
+              padding: const EdgeInsets.all(7.0),
+              itemCount: widget.aluno.disciplinas.length,
+              itemBuilder: (BuildContext context, int index) {
+                final disciplina = widget.aluno.disciplinas[index];
+                return Text('$disciplina.nota');
+              },
+            )),
+          ],
         ),
       ),
     );

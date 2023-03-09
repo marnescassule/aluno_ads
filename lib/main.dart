@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'aluno.dart';
+import 'aluno_detalhe.dart';
 
 void main() => runApp(MyApp());
 
@@ -70,7 +71,8 @@ class MyHomePage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return Text("Detalhes aluno");
+                        return AlunoDetalhe(aluno: Aluno.exemplos[index]);
+                        //return Text("Detalhes aluno");
                       },
                     ),
                   );
